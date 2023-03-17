@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Add marks</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	
+	<body>
+			<style>
+			input[type=text], select {
+			  width: 30%;
+			  padding: 12px 20px;
+			  margin: 8px 0;
+			  display: inline-block;
+			  border: 1px solid #ccc;
+			  border-radius: 4px;
+			  box-sizing: border-box;
+			}
+
+			input[type=submit] {
+			  width: 65%;
+			  background-color: #4CAF50;
+			  color: white;
+			  padding: 14px 20px;
+			  margin: 8px 0;
+			  border: none;
+			  border-radius: 4px;
+			  cursor: pointer;
+			}
+
+			input[type=submit]:hover {
+			  background-color: #45a049;
+			}
+
+			div {
+			  border-radius: 5px;
+			  background-color: #f2f2f2;
+			  padding: 20px;
+			  margin-left: 25%;
+			  margin-right: 25%;
+			}
+		</style>
+		<h1 align="center">Add Students Marks</h1>
+		<div id="addmarks">
+			<form id="addmarksform">
+				University Registration number : <input type="number" id="rollno" required="true"> <br><br>
+				Semester no : <select id="semester" name="semester" required="true">
+								<option value="Sem1">Sem1</option>
+								<option value="Sem2">Sem2</option>
+							  </select>
+							  <br><br>
+				Subject 1 : <input type="number" name="sub1" id="sub1" min="0" max="100"> <br><br>
+				Subject 2 : <input type="number" name="sub2" id="sub2" min="0" max="100"> <br><br>
+				Subject 3 : <input type="number" name="sub3" id="sub3" min="0" max="100"> <br><br>
+				<input type="submit" value="Add Entry">
+			</form>
+		</div>
+		<br><br><br>
+	<a href="logout.jsp">Click to logout</a>
+		
+		<script>
+			$(document).ready(function(){
+				$("#addmarksform").submit(function(e){
+					alert("Called");
+					e.preventDefault();
+					$.ajax({
+						url: "addrec",
+						method: "POST",
+						data: {
+							rollno: $("#rollno").val(),
+							semester: $("#semester").val(),
+							sub1: $("#sub1").val(),
+							sub2: $("#sub2").val(),
+							sub3: $("#sub3").val(),
+						},
+						success: function(res){
+							alert(res);
+							window.location.reload();
+						},
+						fail: function(err){
+							alert(err);
+							window.location.reload();
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

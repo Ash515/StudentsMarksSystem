@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Student Details Form</title>
+	</head>
+	
+	<body>
+		<style>
+			input[type=text], select {
+			  width: 16%;
+			  padding: 12px 20px;
+			  margin: 8px 0;
+			  display: inline-block;
+			  border: 1px solid #ccc;
+			  border-radius: 4px;
+			  box-sizing: border-box;
+			}
+
+			input[type=submit] {
+			  width: 65%;
+			  background-color: #4CAF50;
+			  color: white;
+			  padding: 14px 20px;
+			  margin: 8px 0;
+			  border: none;
+			  border-radius: 4px;
+			  cursor: pointer;
+			}
+
+			input[type=submit]:hover {
+			  background-color: #45a049;
+			}
+
+			div {
+			  border-radius: 5px;
+			  background-color: #f2f2f2;
+			  padding: 20px;
+			  margin-left: 25%;
+			  margin-right: 25%;
+			}
+		</style>
+		<h2 align="center">Welcome Student</h2>
+		<div id="studentdetails">
+			<form id="studentdetailsform" action="getres">
+				<strong>University Registration number :<strong> <input type="number" name="rollno" required="true"> <br><br>
+				<strong>Semester no :<strong> <select id="semester" name="semester" required="true">
+								<option value="Sem1">Sem1</option>
+								<option value="Sem2">Sem2</option>
+							  </select>
+							  <br><br>
+				<input type="submit" value="Get Results">
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd"-->
+<web-app>
+	<distributable/>
+	
+	<servlet>
+	<servlet-name>getres</servlet-name>
+	<servlet-class>GetResult</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>getres</servlet-name>
+	<url-pattern>/getres</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>addstud</servlet-name>
+	<servlet-class>AddStudent</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>addstud</servlet-name>
+	<url-pattern>/addstud</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>readstud</servlet-name>
+	<servlet-class>ReadStudent</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>readstud</servlet-name>
+	<url-pattern>/readstud</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>deletestud</servlet-name>
+	<servlet-class>DeleteStudent</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>deletestud</servlet-name>
+	<url-pattern>/deletestud</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>updatestud</servlet-name>
+	<servlet-class>UpdateStudent</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>updatestud</servlet-name>
+	<url-pattern>/updatestud</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>addrec</servlet-name>
+	<servlet-class>CreateRec</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>addrec</servlet-name>
+	<url-pattern>/addrec</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>updaterec</servlet-name>
+	<servlet-class>UpdateRec</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>updaterec</servlet-name>
+	<url-pattern>/updaterec</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>deleterec</servlet-name>
+	<servlet-class>DeleteRec</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>deleterec</servlet-name>
+	<url-pattern>/deleterec</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>readrec</servlet-name>
+	<servlet-class>ReadRec</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>readrec</servlet-name>
+	<url-pattern>/readrec</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>readrec1</servlet-name>
+	<servlet-class>ReadRec1</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>readrec1</servlet-name>
+	<url-pattern>/readrec1</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>readrec2</servlet-name>
+	<servlet-class>ReadRec2</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>readrec2</servlet-name>
+	<url-pattern>/readrec2</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>authstud</servlet-name>
+	<servlet-class>AuthenticateUser</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>authstud</servlet-name>
+	<url-pattern>/authstud</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>authstaff</servlet-name>
+	<servlet-class>StaffAuth</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>authstaff</servlet-name>
+	<url-pattern>/addstaff</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>authhod</servlet-name>
+	<servlet-class>HodAuth</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>authhod</servlet-name>
+	<url-pattern>/authhod</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>authprinci</servlet-name>
+	<servlet-class>PrinciAuth</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>authprinci</servlet-name>
+	<url-pattern>/authprinci</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>initschedule</servlet-name>
+	<servlet-class>TrialServlet1</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	<servlet-name>initschedule</servlet-name>
+	<url-pattern>/initschedule</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>/Home.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<security-constraint>
+	<web-resource-collection>
+	<web-resource-name>Secured Core Context</web-resource-name>
+	<url-pattern>/Home.jsp</url-pattern>
+	</web-resource-collection>
+	<auth-constraint>
+	<role-name>*</role-name>
+	</auth-constraint>
+	</security-constraint>
+	
+	<login-config>
+	<auth-method>CUSTOMFORM856</auth-method>
+	<form-login-config>
+	<form-login-page>/login.jsp</form-login-page>
+	<form-error-page>/loginError.jsp</form-error-page>
+	</form-login-config>
+	</login-config>
+
+</web-app>

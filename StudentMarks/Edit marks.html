@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Edit Marks</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	
+	<body>
+				<style>
+			input[type=text], select {
+			  width: 34%;
+			  padding: 12px 20px;
+			  margin: 8px 0;
+			  display: inline-block;
+			  border: 1px solid #ccc;
+			  border-radius: 4px;
+			  box-sizing: border-box;
+			}
+
+			input[type=submit] {
+			  width: 65%;
+			  background-color: #4CAF50;
+			  color: white;
+			  padding: 14px 20px;
+			  margin: 8px 0;
+			  border: none;
+			  border-radius: 4px;
+			  cursor: pointer;
+			}
+
+			input[type=submit]:hover {
+			  background-color: #45a049;
+			}
+
+			div {
+			  border-radius: 5px;
+			  background-color: #f2f2f2;
+			  padding: 20px;
+			  margin-left: 25%;
+			  margin-right: 25%;
+			}
+		</style>
+		<h1 align="center">Edit Students Marks</h1>
+	<div id="editmarks">
+			<form id="editmarksform">
+				University Registration number : <input type="number" id="rollno" required="true" disabled> <br><br>
+				Semester no : <input type="text" id="semester" disabled>
+							  <br><br>
+				Subject 1 : <input type="number" name="sub1" id="sub1" min="0" max="100"> <br><br>
+				Subject 2 : <input type="number" name="sub2" id="sub2" min="0" max="100"> <br><br>
+				Subject 3 : <input type="number" name="sub3" id="sub3" min="0" max="100"> <br><br>
+				<input type="submit" value="Update Marks">
+			</form>
+		</div>
+		<br><br><br>
+	<a href="logout.jsp">Click to logout</a>
+		<script>
+			var url = new URL(window.location.href);
+			const rollNo = url.searchParams.get("rollno");
+			const sem = url.searchParams.get("sem");
+			document.getElementById("semester").value = sem;
+				$.ajax({
+						url: "updaterec",
+						method: "GET",
+						dataType: "json",
+						data: {
+							rollno: rollNo,
+							semester: sem,
+						},
+						success: function(data){
+							$("#rollno").val(data.roll_no);
+							$("#sub1").val(data.marks_1);
+							$("#sub2").val(data.marks_2);
+							$("#sub3").val(data.marks_3);
+						},
+						fail: function(err){
+							alert(err);
+						}
+					});
+				$(document).ready(function(){
+				$("#editmarksform").submit(function(e){
+					alert(sem);
+					e.preventDefault();
+					$.ajax({
+						url: "updaterec",
+						method: "POST",
+						data: {
+							rollno: $("#rollno").val(),
+							semester: $("#semester").val(),
+							sub1: $("#sub1").val(),
+							sub2: $("#sub2").val(),
+							sub3: $("#sub3").val(),
+						},
+						success: function(res){
+							alert(res);
+							window.location.reload();
+						},
+						fail: function(err){
+							alert(err);
+							window.location.reload();
+						}
+					});
+				});
+				});
+		
+			
+		</script>
+	</body>
+</html>

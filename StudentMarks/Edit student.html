@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Edit student</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	
+	<body>
+					<style>
+			input[type=text], select {
+			  width: 16%;
+			  padding: 12px 20px;
+			  margin: 8px 0;
+			  display: inline-block;
+			  border: 1px solid #ccc;
+			  border-radius: 4px;
+			  box-sizing: border-box;
+			}
+
+			input[type=submit] {
+			  width: 65%;
+			  background-color: #4CAF50;
+			  color: white;
+			  padding: 14px 20px;
+			  margin: 8px 0;
+			  border: none;
+			  border-radius: 4px;
+			  cursor: pointer;
+			}
+
+			input[type=submit]:hover {
+			  background-color: #45a049;
+			}
+
+			div {
+			  border-radius: 5px;
+			  background-color: #f2f2f2;
+			  padding: 20px;
+			  margin-left: 25%;
+			  margin-right: 25%;
+			}
+		</style>
+		<h1 align="center">Edit Students Details</h1>
+		<div id="editstudent">
+			<form action="updatestud" id="editstudentform" method="post">
+				Roll no : <input type="number" id="rollno" disabled> <br>
+				
+				Name : <input type="text" name="name" id="name"> <br>
+				
+				DOB : <input type="date" id="dob" disabled> <br>
+				
+				Dept : <select id="dept" name="dept" required="true">
+						<option value="CSE">CSE</option>
+						<option value="ECE">ECE</option>
+						<option value="EEE">EEE</option>
+						<option value="EEE">EEE</option>
+					   </select>
+					   
+					   <br>
+					   
+				Year : <select id="year" name="year" required="true">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					   </select>
+					   
+					   <br>
+					   
+				Email ID : <input type="email" name="email" id="email"> <br>
+				
+				<input type="submit" value="Update Student Info">
+			</form>
+		</div>
+		<br><br><br>
+	<a href="logout.jsp">Click to logout</a>
+		<script>
+			var url = new URL(window.location.href);
+			const rollNo = url.searchParams.get("rollno");
+				$.ajax({
+					url: "updatestud",
+					method: "GET",
+					dataType: "json",
+					data: {
+						rollno: rollNo,
+					},
+					success: function(data){
+						$("#rollno").val(data.roll_no);
+						$("#name").val(data.student_name);
+						$("#dob").val(data.dob);
+						$("#dept").val(data.dept);
+						$("#year").val(data.year);
+						$("#email").val(data.email_id);
+					},
+					failure: function(error){
+						document.getElementById("editstudent").innerHtml = "Could not access DB....please try later!!!";
+					}
+				});
+				
+				$(document).ready(function(){
+					$("#editstudentform").submit(function(e){
+						e.preventDefault();
+						$("#rollno").disabled = false;
+						$("#dob").disabled = false;
+						$.ajax({
+							url: "updatestud",
+							method: "POST",
+							data: {
+								rollno: $("#rollno").val(),
+								name: $("#name").val(),
+								dept: $("#dept").val(),
+								year: $("#year").val(),
+								email: $("#email").val()
+							},
+							success: function(){
+								alert("Edited sucessfully!!!");
+							},
+							failure: function(){
+								alert("Error in updating....please try later!!!");
+							}
+						});
+					});
+				});
+		
+			
+		</script>
+	</body>
+</html>
