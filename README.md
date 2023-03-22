@@ -1,7 +1,7 @@
 # Students Marks Management System 
 
 
-Technologies
+### Technologies
 - MickeyLite 
 - Java
 - HTML, CSS
