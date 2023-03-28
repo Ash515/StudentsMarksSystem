@@ -2,7 +2,7 @@
 
 
 ### Technologies
-- MickeyLite 
+- MickeyLite (ORM) 
 - Java
 - HTML, CSS
 - JavaScript
